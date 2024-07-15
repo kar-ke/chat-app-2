@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 14px;
+    font-family: var(--font-regular);
+    color: var(--c-grey-100);
+    background-color: black;
+}
+
+ul li { list-style: none; }
+a { text-decoration: none; }
+
+:root{
+    --w-app-sidebar: 250px;
+}
