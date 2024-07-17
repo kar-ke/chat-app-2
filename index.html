@@ -1,81 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatapps</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chatapps</title>
 
-    <!-- icon set cdn -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+		<!-- icon set cdn -->
+		<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-    <!-- css file  -->
-    <link rel="stylesheet" href="./styles/root.css">
-</head>
-<body>
-    <div class="app-container">
+		<!-- css file  -->
+		<link rel="stylesheet" href="./styles/root.css">
+	</head>
+	<body>
+		<div class="app-container">
 
-        <aside class="sidebar">
-            <header class="sidebar-header">
-                <div class="logo-container">
-                    <img src="./Assets/logo/logo.svg" alt="app logo" class="logo">
-                </div>
-                <div class="user-details">
-                    <img src="./Assets/user images/img-1.avif" alt="user-1" class="user-image">
-                    <p class="f15 c-white">Martin Herwitz</p>
-                    <small>+62823409123</small>
-                </div>
-                <div>
-                    <div>
-                        <small>E-mail</small>
-                        <p class="c-white">martinhertz@mail.com</p>
-                    </div>
-                    <div class="mt10">
-                        <small>Status</small>
-                        <p class="c-white">Product Designer</p>
-                    </div>
-                </div>
-                <hr class="c-grey">
-                <ul class="sidebar-navlist">
-                    <li class="sidebar-navitem message-count-badge active">
-                        <i class='bx bx-message-square-detail bx-flip-horizontal f15' ></i>
-                        <span>Messages</span>
-                    </li>
-                    <li class="sidebar-navitem">
-                        <i class='bx bx-key bx-rotate-90 f15' ></i>
-                        <span>Privacy & Security</span>
-                    </li>
-                    <li class="sidebar-navitem">
-                        <i class='bx bx-cog f15'></i>
-                        <span>Settings</span>
-                    </li>
-                    <li class="sidebar-navitem darkmode-toggle">
-                        <i class='bx bx-moon f15'></i>
-                        <span>Dark Mode</span>
-                        <span class="theme-switch active"></span>
-                    </li>
-                </ul>
-            </header>
-            <footer>
-                <ul>
-                    <li class="sidebar-navitem archive-count-badge">
-                        <i class='bx bx-box f15'></i>
-                        <Span>Archived</Span>
-                    </li>
-                    <li class="sidebar-navitem">
-                        <i class='bx bx-trash f15' ></i>
-                        <Span>Trash</Span>
-                    </li>
-                </ul>
-            </footer>
-    
-        </aside>
-    
-        <section class="chat-section">
-    
-        </section>
-    </div>
+			<!-- sidebar  -->
+			<aside class="sidebar">
+				<header class="sidebar-header">
+					<div class="flex justify-between p10">
+						<div class="logo-container">
+							<img src="./Assets/logo/logo.svg" alt="app logo" class="logo">
+						</div>
+						<button onclick="closeSettings()" class="default-btn c-white settings-close-btn"><i class="bx bx-x f20"></i></button>
+					</div>
+					<div class="user-details">
+						<img src="./Assets/userImages/img-1.avif" alt="user-1" class="user-image">
+						<p class="f15 c-white">Martin Herwitz</p>
+						<small>+62823409123</small>
+					</div>
+					<div>
+						<div>
+							<small>E-mail</small>
+							<p class="c-white">martinhertz@mail.com</p>
+						</div>
+						<div class="mt10">
+							<small>Status</small>
+							<p class="c-white">Product Designer</p>
+						</div>
+					</div>
+					<hr class="c-grey">
+					<ul class="sidebar-navlist">
+						<li class="sidebar-navitem message-count-badge active">
+							<i class="bx bx-message-square-detail bx-flip-horizontal f15"></i>
+							<span>Messages</span>
+						</li>
+						<li class="sidebar-navitem">
+							<i class="bx bx-key bx-rotate-90 f15"></i>
+							<span>Privacy & Security</span>
+						</li>
+						<li class="sidebar-navitem">
+							<i class="bx bx-cog f15"></i>
+							<span>Settings</span>
+						</li>
+						<li class="sidebar-navitem darkmode-toggle">
+							<i class="bx bx-moon f15"></i>
+							<span>Dark Mode</span>
+							<span class="theme-switch active"></span>
+						</li>
+					</ul>
+				</header>
+				<footer>
+					<ul>
+						<li class="sidebar-navitem archive-count-badge">
+							<i class="bx bx-box f15"></i>
+							<span>Archived</span>
+						</li>
+						<li class="sidebar-navitem">
+							<i class="bx bx-trash f15"></i>
+							<span>Trash</span>
+						</li>
+					</ul>
+				</footer>
+			</aside>
 
-    <!-- script file  -->
-    <script src="./javascript/index.js"></script>
-</body>
+			<!-- chat section  -->
+			<section class="chat-section">
+				<!-- chat header  -->
+				<header class="chat-header-container">
+					<div class="secondary-header">
+						<button onclick="backtoMain()" class="default-btn back-btn"><i class="bx bx-arrow-back f20"></i></button>
+						<h2 class="page-title title-l">Messages</h2>
+						<div class="search-container">
+							<i class="bx bx-search f20"></i>
+							<input class="search-bar" type="text" placeholder="Search">
+						</div>
+						<button class="default-btn" onclick="openContacts()">
+							<i class="bx bx-comment-add f20 add-cmnt-btn"></i>
+						</button>
+					</div>
+					<div class="primary-header">
+						<div class="user-details-array">
+							<div>
+								<img src="./Assets/userImages/img-1.avif" alt="user-img" class="user-image">
+							</div>
+							<div>
+								<p class="title-m">James Torff</p>
+								<span class="status-badge"></span><small>Online</small>
+							</div>
+						</div>
+						<ul class="header-menu-list">
+							<li class="header-menu-item">
+								<button class="default-btn"><i class="bx bx-search f22"></i></button>
+							</li>
+							<li class="header-menu-item">
+								<button class="default-btn"><i class="bx bx-phone f22"></i></button>
+							</li>
+							<li class="header-menu-item">
+								<button class="default-btn"><i class="bx bx-video f22"></i></button>
+							</li>
+							<li class="header-menu-item">
+								<button class="default-btn"><i class="bx bx-dots-vertical-rounded f22"></i></button>
+							</li>
+						</ul>
+					</div>
+				</header>
+
+				<!-- conversation area  -->
+				<div class="conversation-area">
+					<div class="conversations-wrapper">
+						<div class="send-msg message-wrapper">
+							<div class="message">
+								<p>Hi! I'm looking</p>
+							</div>
+							<div class="chat-details-container">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="chat-image" class="chat-image">
+								</div>
+								<small>James Tarff</small>
+								<time class="chat-time">09:12 AM</time>
+							</div>
+						</div>
+						<div class="received-msg message-wrapper">
+							<div class="message">
+								<p>Hi! I'm looking for someone to design a logo for my new business.Hi! I'm looking for someone to design a logo for my new business.</p>
+							</div>
+							<div class="chat-details-container">
+								<time class="chat-time">09:12 AM</time>
+								<i class="bx bx-check-double f20"></i>
+								<small>You</small>
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="chat-image" class="chat-image">
+								</div>
+							</div>
+						</div>
+						<div class="send-msg message-wrapper">
+							<div class="message">
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aperiam distinctio laborum exercitationem non reiciendis modi impedit delectus deleniti inventore, totam earum velit minus nam enim
+									consequuntur eos odio quae?
+								</p>
+							</div>
+							<div class="chat-details-container">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="chat-image" class="chat-image">
+								</div>
+								<small>James Tarff</small>
+								<time class="chat-time">09:12 AM</time>
+							</div>
+						</div>
+						<div class="received-msg message-wrapper">
+							<div class="message">
+								<p>Hi! I'm looking for someone to design a logo for my new business.Hi! I'm looking for someone to design a logo for my new business.</p>
+							</div>
+							<div class="chat-details-container">
+								<time class="chat-time">09:12 AM</time>
+								<i class="bx bx-check-double f20"></i>
+								<small>You</small>
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="chat-image" class="chat-image">
+								</div>
+							</div>
+						</div>
+						<div class="send-msg message-wrapper">
+							<div class="message">
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aperiam distinctio laborum exercitationem non reiciendis modi impedit delectus deleniti inventore, totam earum velit minus nam enim
+									consequuntur eos odio quae?
+								</p>
+							</div>
+							<div class="chat-details-container">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="chat-image" class="chat-image">
+								</div>
+								<small>James Tarff</small>
+								<time class="chat-time">09:12 AM</time>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="conversation-input-area">
+					<div class="input-container">
+						<button class="default-btn"><i class="bx bxs-microphone f20"></i></button>
+						<input type="text" placeholder="Type your message here" class="search-bar">
+						<button class="default-btn"><i class="bx bx-paperclip f20"></i></button>
+						<button class="default-btn"><i class="bx bx-happy f20"></i></button>
+					</div>
+				</div>
+			</section>
+
+			<!-- contacts section  -->
+			<section class="contacts-section">
+				<header class="contacts-header">
+					<div class="contacts-inner-header">
+						<div class="logo-container">
+							<img src="./Assets/logo/logo.svg" alt="app logo" class="logo">
+						</div>
+						<h4 class="title-s contact-title">Recently Contacted</h4>
+						<div class="contacts-header-menu">
+							<button class="default-btn"><i class="bx bx-search f20 c-white"></i></button>
+							<button onclick="openSettings()" class="default-btn"><i class="bx bx-cog f20 c-white"></i></button>
+						</div>
+						<button class="default-btn close-contacts" onclick="closeContacts()">
+							<i class="bx bx-x f20"></i>
+						</button>
+					</div>
+
+					<ul class="recent-contacts-list">
+						<li class="recent-contact-item active">
+							<button class="default-btn">
+								<span class="s40 mb5">
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="user-image">
+								</span>
+								<span class="title-s">james</span>
+							</button>
+						</li>
+						<li class="recent-contact-item active">
+							<button class="default-btn">
+								<span class="s40 mb5">
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="user-image">
+								</span>
+								<span class="title-s">Giana</span>
+							</button>
+						</li>
+						<li class="recent-contact-item active">
+							<button class="default-btn">
+								<span class="s40 mb5">
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="user-image">
+								</span>
+								<span class="title-s">livia</span>
+							</button>
+						</li>
+						<li class="recent-contact-item">
+							<button class="default-btn">
+								<span class="s40 mb5">
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="user-image">
+								</span>
+								<span class="title-s">Nolan</span>
+							</button>
+						</li>
+						<li class="recent-contact-item">
+							<button class="default-btn">
+								<span class="s40 mb5">
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="user-image">
+								</span>
+								<span class="title-s">Lincoln</span>
+							</button>
+						</li>
+					</ul>
+				</header>
+
+				<div class="contact-search-container">
+					<p class="title-m c-black">Chat</p>
+					<div class="contact-searchbar-wrapper">
+						<i class="bx bx-search f20"></i>
+						<input class="search-bar" type="text" placeholder="Search">
+						<i class="bx bx-filter f20"></i>
+					</div>
+				</div>
+
+				<!-- chat list body  -->
+
+				<div class="messeged-contacts-container">
+					<ul class="messeged-contact-list">
+						<li class="active">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're thinking o dvcasd safcasf</small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+						<li class="unread">
+							<a href="#" class="messeged-contact-link">
+								<div>
+									<img src="./Assets/userImages/img-1.avif" alt="user-img" class="contact-img">
+								</div>
+								<div class="contact-details">
+									<p>James Torff</p>
+									<small class="message-peak">We're </small>
+								</div>
+								<div class="more-details">
+									<time class="title-s">09:14 AM</time>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+
+		<!-- script file  -->
+		<script src="./javascript/index.js"></script>
+	</body>
 </html>

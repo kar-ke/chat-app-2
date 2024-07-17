@@ -6,6 +6,7 @@
 @font-face {
     font-family: "Poppins-Medium";
     src: url("../Assets/fonts/Poppins-Medium.ttf");
+    font-weight: 500;
 }
 
 @font-face {

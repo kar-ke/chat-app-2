@@ -16,6 +16,7 @@
 .f40 { font-size: 40px; }
 
 /* size */
+.s10 { width: 10px; height: 10px; }
 .s20 { width: 20px; height: 20px; }
 .s22 { width: 22px; height: 22px; }
 .s28 { width: 28px; height: 28px; }
@@ -24,6 +25,8 @@
 .s40 { width: 40px; height: 40px; }
 .s50 { width: 50px; height: 50px; }
 .s100 { width: 100px; height: 100px; }
+
+.br50 { border-radius: 50%;}
 
 /* dropdown width */
 .w120 { width: 120px; }
@@ -44,7 +47,7 @@
 .mt24 { margin-top: 24px;}
 
 /* margin bottom  */
-.mb4 { margin-bottom: 4px; }
+.mb5 { margin-bottom: 5px; }
 .mb10 { margin-bottom: 10px; }
 .mb15 { margin-bottom: 15px; }
 .mb20 { margin-bottom: 20px; }
@@ -52,3 +55,6 @@
 .mb30 { margin-bottom: 30px; }
 .mb40 { margin-bottom: 40px; }
 .mb50 { margin-bottom: 50px; }
+
+/* whitespace wrap  */
+.nowrap { white-space: nowrap;}

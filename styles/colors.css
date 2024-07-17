@@ -1,8 +1,7 @@
 
 :root{
-
-
     --c-white : #ebeef3;
+    --c-black: black;
 
     --c-dark-blue : #030617;
     --c-grey-100 : #aaabad;
@@ -13,8 +12,9 @@
     --c-highlight-2 : #282b3a;
 
     --c-red : #f55;
-
 }
 
-.c-white { color: var(--c-white)}
-.c-grey { background-color: var(--c-highlight-2)}
+.c-white { color: var(--c-white) }
+.c-black { color : var(--c-black) }
+.c-light-grey { color : var(--c-grey-100)}
+.c-grey { background-color: var(--c-highlight-2) }

@@ -1,3 +1,17 @@
+:root{
+    --w-app-sidebar: 250px;
+    --w-contacts-area : 300px;
+
+    --h-secondary-header : 50px;
+    --h-primary-header : 70px;
+    --h-footer-inputbar : 60px;
+
+
+    --h-contacts-header : 150px;
+    --h-contact-searchbar : 100px;
+
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -9,11 +23,28 @@ body{
     font-family: var(--font-regular);
     color: var(--c-grey-100);
     background-color: black;
+    line-height: 1.4;
 }
 
 ul li { list-style: none; }
 a { text-decoration: none; }
 
-:root{
-    --w-app-sidebar: 250px;
+
+/* scroll bar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c-grey-100); 
+    border-radius: 10px;
+}
+
+/* button  */
+.default-btn{
+    background-color: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

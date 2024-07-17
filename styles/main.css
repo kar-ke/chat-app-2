@@ -1,21 +1,30 @@
 .app-container{
     display: flex;
     flex-direction: row;
-    max-width: 1440px ;
+    max-width: 1600px;
     height: 100vh;
-    margin: 0 auto;
     background-color: var(--c-grey-200);
+    margin: 0 auto;
 }
 
-/* sidebar styles  */
+/* app sidebar*/
 .sidebar{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: var(--w-app-sidebar);
-    height: 100vh;
+    min-width: var(--w-app-sidebar);
+    height: 100%;
     padding: 15px;
     background-color: var(--c-dark-blue);
+}
+
+.sidebar.open{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
 }
 
 .sidebar-header{
@@ -27,33 +36,36 @@
 
 .logo{
     height: 22px;
+    width: auto;
 }
+
+.settings-close-btn{ display: none;}
 
 .user-details{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100px;
     gap: 2px;
+    height: 100px;
 }
 
 .user-image{
-    height: 40px;
+    display: block;
     width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
 
 .sidebar-navitem{
-    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
-    cursor: pointer;
-    margin: 2px 0;
     transition: .5s;
+    cursor: pointer;
+    position: relative;
 }
 
 .sidebar-navitem:hover:not(.darkmode-toggle),
@@ -68,11 +80,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--c-red);
-    color: var(--c-white);
     width: 18px;
     height: 18px;
+    background-color: var(--c-red);
     font-size: 10px;
+    color: var(--c-white);
     border-radius: 50%;
     position: absolute;
     right: 10px;
@@ -87,8 +99,8 @@
     height: 20px;
     border: 1px solid var(--c-grey-100);
     border-radius: 50px;
-    position: relative;
-    left: 65px;
+    position: absolute;
+    right: 0;
     cursor: pointer;
     transition: all .2s ease;
 }
@@ -98,8 +110,8 @@
     width: 15px;
     height: 15px;
     background-color:var(--c-white) ;  
-    position: absolute;
     border-radius: 50%;
+    position: absolute;
     right: 2px;
     top: 2px;
     transition: all .2s ease;
@@ -112,12 +124,328 @@
 
 
 
-
-
-
-
-
+/* main conversation section  */
 .chat-section{
-    height: 100vh;
-    width: calc(100%-var(--w-app-sidebar));
+    width: calc(100% - var(--w-app-sidebar));
+    height: 100%;
+    border-right: 1px solid var(--c-white);
 }
+
+.chat-section.open-chat{
+    display: block;
+    width: 100%;
+    background-color: var(--c-white);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.chat-section.open-chat .secondary-header{ justify-content: space-between;}
+
+.chat-header-container{ background-color: white;}
+
+.secondary-header{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+    height: var(--h-secondary-header);
+    padding: 0 20px;
+    border-bottom: 1px solid var(--c-grey-200);
+}
+
+.back-btn{ display: none; }
+
+.page-title{
+    font-size: 18px;
+    color: var(--c-black);
+    margin-right: auto ;
+}
+
+.search-container{
+    display: flex;
+    align-items: center;
+    width: 250px;
+    padding-left: 10px;
+    background-color: var(--c-grey-200);
+    border-radius : 5px;
+}
+
+.search-bar{
+    width: 100%;
+    padding: 5px 10px;
+    background-color: transparent;
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+.add-cmnt-btn{
+    padding: 4px;
+    background-color: var(--c-highlight);
+    color: var(--c-white);
+    border-radius: 5px;
+}
+
+.primary-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--h-primary-header);
+    padding: 0 20px;
+}
+
+.user-details-array{
+    display: flex;
+    gap: 10px;
+    color: var(--c-black);
+}
+
+.user-details-array .user-image{ margin: auto; }
+
+.status-badge{
+    display: inline-block;
+    vertical-align: middle;
+    width: 5px;
+    height: 5px;
+    background-color: var(--c-highlight);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.header-menu-list{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 15px;
+}
+
+.header-menu-item{
+    width: 25px;
+    height: 25px;
+}
+
+.conversation-area{
+    height: calc(100% - (var(--h-secondary-header) + var(--h-primary-header) + var(--h-footer-inputbar)));
+    overflow-y: auto;
+}
+
+.conversations-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.send-msg{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.send-msg .message{
+    display: inline-block;
+    text-align: left;
+    max-width: 500px;
+    padding: 10px 15px;
+    background-color: white;
+    color: var(--c-black);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 10px 0;
+}
+
+.chat-details-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.chat-image{
+    display: block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+.send-msg .chat-time{
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.received-msg{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.received-msg .message{
+    display: inline-block;
+    max-width: 500px;
+    padding: 10px 15px;
+    background-color: var(--c-highlight);
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 10px 0;
+}
+
+.received-msg .chat-time{
+    font-size: 12px;
+    margin-right: auto;
+}
+
+.conversation-input-area{
+    height: var(--h-footer-inputbar);
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.input-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    background-color: var(--c-white);
+    color: var(--c-black);
+    border-radius: 5px;
+}
+
+.conversation-input-area .search-bar{
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+
+
+/* Recent contacts section  */
+.contacts-section{
+    width: var(--w-contacts-area);
+    background-color: white;
+    position: relative;
+}
+
+.contacts-section.open{
+    right: -300px;
+    display: none;
+}
+
+.contacts-header{ height: var(--h-contacts-header); }
+.contacts-inner-header .logo-container{ display: none; }
+
+.contacts-inner-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    color: var(--c-black);
+}
+
+.contacts-header-menu{
+    display: none;
+    gap: 15px;
+}
+
+.recent-contacts-list{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--c-white);
+}
+
+.recent-contact-item{ opacity: .3; }
+
+.recent-contact-item.active{
+    opacity: 1;
+    position: relative;
+}
+
+.recent-contact-item.active::after{
+    content: "";
+    width: 7px;
+    height: 7px;
+    background-color : var(--c-highlight);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 40%;
+    right: 2%;
+}
+
+.contact-search-container{
+    height: var(--h-contact-searchbar);
+    padding: 10px 20px;
+}
+
+.contact-searchbar-wrapper{
+    display: flex;
+    align-items: center;
+    padding: 2px 10px;
+    background-color: var(--c-white);
+    border-radius : 5px;
+    margin-top: 10px;
+}
+
+.messeged-contacts-container {
+    height: calc(100% - (var(--h-contacts-header) + var(--h-contact-searchbar)));
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.messeged-contact-list li{ border-bottom: 1px solid var(--c-white); }
+
+.messeged-contact-link{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 2px 0;
+}
+
+.messeged-contact-link:hover{ background-color: var(--c-white); }
+.active .messeged-contact-link{ background-color: var(--c-white); }
+
+.contact-img{
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.contact-details{
+    flex: 1;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.more-details{
+    position: relative;
+    margin-left: auto;
+}
+
+.unread .more-details::after{
+    content: "5";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    background-color: var(--c-red);
+    font-size: 10px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+}
+
+.message-peak{ white-space: nowrap; }
