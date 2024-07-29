@@ -1,4 +1,5 @@
 
+// sidebar functions 
 const themeSwitch = document.querySelector('.theme-switch');
 const navItems = document.querySelectorAll('.sidebar-navitem');
 
@@ -17,6 +18,8 @@ navItems.forEach((navItem) => {
     });
 });
 
+
+// recent contacts toggle 
 function closeContacts() {
     const contactSection = document.querySelector('.contacts-section');
     contactSection.classList.add('open');
@@ -27,6 +30,8 @@ function openContacts() {
     contactSection.classList.remove('open');
 }
 
+
+// settings or sidebar toggle 
 function openSettings() {
     const sideBar = document.querySelector('.sidebar');
     sideBar.classList.add('open')
@@ -36,8 +41,10 @@ function closeSettings() {
     sideBar.classList.remove('open')
 }
 
-const contacts = document.querySelectorAll('.messeged-contact-link');
 
+
+// recent contacts chat drilldown 
+const contacts = document.querySelectorAll('.messeged-contact-link');
 contacts.forEach((contact) => {
     contact.addEventListener('click', function () {
         document.querySelector('.chat-section').classList.add('open-chat')
